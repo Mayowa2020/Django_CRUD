@@ -1,7 +1,8 @@
 from dataclasses import fields
-from django.shortcuts import render
+from xml.parsers.expat import model
+from django.views import generic
 from django.urls import reverse_lazy
-from I4G005615YP2.blog.models import Post
+from .models import Post
 
 # Create your views here.
 
@@ -20,6 +21,9 @@ class PostUpdateView(generic.UpdateView):
     model = Post
     fields = "__all__"
     success_url = reverse_lazy("blog:all")
+    
 
-    class PostDeleteView(generic.UpdateView):    
-
+class PostDeleteView(generic.UpdateView):
+    model = Post
+    fields = "__all__"
+    success_url = reverse_lazy("blog:all")    
